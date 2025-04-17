@@ -43,3 +43,18 @@ export interface CandidateProfile extends Candidate {
     languages: string[];
   };
 }
+
+export interface SavedSearch {
+  id: string;
+  date: string;
+  vacancy: string;
+  location: string;
+  skills: Skill[];
+  candidateIds: string[];
+}
+
+export interface SkillFilter {
+  name: string;
+  level: number;
+  icon: React.ReactNode;
+}

@@ -40,12 +40,12 @@ const MatchDetailsModal: React.FC<MatchDetailsModalProps> = ({
         <div className="mt-6 space-y-6">
           <div>
             <p className="text-lg mb-2">Porcentaje general: {matchDetails.matchPercentage}%</p>
-            <Progress value={matchDetails.matchPercentage} className="h-2 bg-zara-gray-200" indicatorClassName="bg-zara-black" />
+            <Progress value={matchDetails.matchPercentage} className="h-2 bg-zara-gray-200" />
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-medium mb-3">Habilidades cumplidas</h3>
+              <h3 className="font-medium mb-3">Habilidades</h3>
               <ul className="list-disc list-inside text-sm space-y-1">
                 {matchDetails.matchedSkills.map((skill, index) => (
                   <li key={index}>{skill}</li>
@@ -54,7 +54,7 @@ const MatchDetailsModal: React.FC<MatchDetailsModalProps> = ({
             </div>
             
             <div>
-              <h3 className="font-medium mb-3">Habilidades que faltan</h3>
+              <h3 className="font-medium mb-3">Oportunidades de mejora</h3>
               {matchDetails.missingSkills.length > 0 ? (
                 <ul className="list-disc list-inside text-sm space-y-1">
                   {matchDetails.missingSkills.map((skill, index) => (
