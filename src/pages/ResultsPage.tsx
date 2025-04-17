@@ -8,7 +8,7 @@ import {
   Save,
   X,
   Sliders,
-  FilePdf
+  FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { 
@@ -29,6 +29,13 @@ import FilterPanel from '@/components/FilterPanel';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+
+// Add this to make TypeScript recognize the autoTable method
+declare module 'jspdf' {
+  interface jsPDF {
+    autoTable: (options: any) => jsPDF;
+  }
+}
 
 interface SkillFilters {
   leadership: number;
@@ -221,7 +228,7 @@ const ResultsPage = () => {
             onClick={handleExportResults}
             className="flex items-center text-sm border border-zara-gray-300 hover:bg-zara-gray-100"
           >
-            <FilePdf size={16} className="mr-2" />
+            <FileText size={16} className="mr-2" />
             EXPORTAR PDF
           </Button>
           
