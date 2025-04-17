@@ -131,13 +131,16 @@ const ResultsPage = () => {
       
       // Add filter information at the bottom
       doc.setFontSize(10);
-      const filterY = doc.autoTable.previous.finalY + 10;
-      doc.text("Filtros aplicados:", 14, filterY);
-      doc.text(`• Liderazgo: ${activeFilters.leadership}`, 14, filterY + 5);
-      doc.text(`• Comunicación: ${activeFilters.communication}`, 14, filterY + 10);
-      doc.text(`• Trabajo en equipo: ${activeFilters.teamwork}`, 14, filterY + 15);
-      doc.text(`• Resolución de problemas: ${activeFilters.problemSolving}`, 14, filterY + 20);
-      doc.text(`• Pensamiento crítico: ${activeFilters.criticalThinking}`, 14, filterY + 25);
+      // Fix: Calculate the final Y position without using previous property
+      let finalY = 35 + (tableRows.length + 1) * 10; // Estimate based on rows
+      if (finalY < 130) finalY = 130; // Ensure minimum space
+      
+      doc.text("Filtros aplicados:", 14, finalY);
+      doc.text(`• Liderazgo: ${activeFilters.leadership}`, 14, finalY + 5);
+      doc.text(`• Comunicación: ${activeFilters.communication}`, 14, finalY + 10);
+      doc.text(`• Trabajo en equipo: ${activeFilters.teamwork}`, 14, finalY + 15);
+      doc.text(`• Resolución de problemas: ${activeFilters.problemSolving}`, 14, finalY + 20);
+      doc.text(`• Pensamiento crítico: ${activeFilters.criticalThinking}`, 14, finalY + 25);
       
       // Save the document
       doc.save(`candidatos_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`);
