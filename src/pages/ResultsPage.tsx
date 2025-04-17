@@ -27,7 +27,7 @@ import { toast } from '@/components/ui/use-toast';
 import { Candidate, SkillFilter } from '@/types/candidate';
 import FilterPanel from '@/components/FilterPanel';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 // Add this to make TypeScript recognize the autoTable method
@@ -112,7 +112,8 @@ const ResultsPage = () => {
         candidate.skills.map(s => s.name).join(", ")
       ]);
       
-      // Add the table to the document
+      // Add the table to the document using autoTable
+      // @ts-ignore - Required to make it work with TypeScript
       doc.autoTable({
         head: [tableColumn],
         body: tableRows,
@@ -131,7 +132,7 @@ const ResultsPage = () => {
       
       // Add filter information at the bottom
       doc.setFontSize(10);
-      // Fix: Calculate the final Y position without using previous property
+      // Calculate the final Y position
       let finalY = 35 + (tableRows.length + 1) * 10; // Estimate based on rows
       if (finalY < 130) finalY = 130; // Ensure minimum space
       
