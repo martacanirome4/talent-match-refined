@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
@@ -13,6 +13,7 @@ import {
 
 interface FilterPanelProps {
   onApplyFilters: (filters: SkillFilters) => void;
+  initialFilters?: SkillFilters;
 }
 
 interface SkillFilters {
@@ -23,7 +24,7 @@ interface SkillFilters {
   criticalThinking: number;
 }
 
-const FilterPanel: React.FC<FilterPanelProps> = ({ onApplyFilters }) => {
+const FilterPanel: React.FC<FilterPanelProps> = ({ onApplyFilters, initialFilters }) => {
   const [filters, setFilters] = useState<SkillFilters>({
     leadership: 1,
     communication: 1,
@@ -31,6 +32,13 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ onApplyFilters }) => {
     problemSolving: 1,
     criticalThinking: 1
   });
+
+  // Update filters if initialFilters are provided
+  useEffect(() => {
+    if (initialFilters) {
+      setFilters(initialFilters);
+    }
+  }, [initialFilters]);
   
   const handleSliderChange = (skill: keyof SkillFilters, value: number[]) => {
     setFilters(prev => ({
