@@ -15,6 +15,7 @@ export interface Candidate {
   languages: string[];
   mobility: string;
   skills: Skill[];
+  basePercentage: number;
   matchPercentage: number;
   avatar?: string;
 }

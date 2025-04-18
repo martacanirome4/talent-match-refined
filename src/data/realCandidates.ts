@@ -11,8 +11,9 @@ export const realCandidates: Candidate[] = [
     education: "Ciclos formativos de grado medio o superior",
     languages: ['Inglés  (Medio)'],
     mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0 }, { name: 'Trabajo En Equipo', level: 0 }, { name: 'Orientacion Resultados', level: 0 }],
-    matchPercentage: 53
+    skills: [{ name: 'Comunicacion', level: 0.1372149121046274 }, { name: 'Trabajo En Equipo', level: 0.0944608935282082 }, { name: 'Orientacion Resultados', level: 0.1209490625618464 }],
+    basePercentage: 50,
+    matchPercentage: 50
   },
   {
     id: "1643443",
@@ -24,8 +25,9 @@ export const realCandidates: Candidate[] = [
     education: "MBA",
     languages: ['Español (Alto)'],
     mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0 }, { name: 'Trabajo En Equipo', level: 0 }, { name: 'Orientacion Resultados', level: 0 }],
-    matchPercentage: 53
+    skills: [{ name: 'Comunicacion', level: 0.0918258620871567 }, { name: 'Trabajo En Equipo', level: 0.1580530545015999 }, { name: 'Orientacion Resultados', level: 0.1500027236730848 }],
+    basePercentage: 50,
+    matchPercentage: 50
   },
   {
     id: "134406",
@@ -37,8 +39,9 @@ export const realCandidates: Candidate[] = [
     education: "Titulación universitaria de grado superior",
     languages: ['Español (Dominio completo)'],
     mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0 }, { name: 'Trabajo En Equipo', level: 0 }, { name: 'Orientacion Resultados', level: 0 }],
-    matchPercentage: 53
+    skills: [{ name: 'Comunicacion', level: 0.0804878485429299 }, { name: 'Trabajo En Equipo', level: 0.2550527319760833 }, { name: 'Orientacion Resultados', level: 0.4689721471205864 }],
+    basePercentage: 50,
+    matchPercentage: 50
   },
   {
     id: "1643293",
@@ -50,8 +53,9 @@ export const realCandidates: Candidate[] = [
     education: "Grado (Bolonia)",
     languages: ['Catalán  (Dominio completo)'],
     mobility: "INTERNACIONAL",
-    skills: [{ name: 'Liderazgo', level: 0 }, { name: 'Comunicacion', level: 0 }, { name: 'Trabajo En Equipo', level: 0 }, { name: 'Orientacion Resultados', level: 0 }],
-    matchPercentage: 46
+    skills: [{ name: 'Liderazgo', level: 0.2499886731911664 }, { name: 'Comunicacion', level: 0.0997277705735506 }, { name: 'Trabajo En Equipo', level: 0.091329826858549 }, { name: 'Orientacion Resultados', level: 0.1249958519307296 }],
+    basePercentage: 37,
+    matchPercentage: 42
   },
   {
     id: "1669997",
@@ -63,8 +67,9 @@ export const realCandidates: Candidate[] = [
     education: "Ciclos formativos de grado medio o superior",
     languages: ['Francés (Bajo)'],
     mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0 }, { name: 'Trabajo En Equipo', level: 0 }],
-    matchPercentage: 46
+    skills: [{ name: 'Comunicacion', level: 0.1385792677434583 }, { name: 'Trabajo En Equipo', level: 0.1573012906108414 }],
+    basePercentage: 50,
+    matchPercentage: 42
   }
 ];
 

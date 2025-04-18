@@ -124,6 +124,7 @@ def match_empleados_a_vacante(df_empleados, df_comp, vacante_obj, top_n=5):
         idiomas_requeridos = set(vacante_obj.get("idiomas_necesarios", []))
         if idiomas_requeridos.issubset(idiomas_empleado):
             score += 2
+        base_score = score
 
         # Competencias
         id_emp = empleado["ID_UNIVERSAL"]
@@ -133,10 +134,10 @@ def match_empleados_a_vacante(df_empleados, df_comp, vacante_obj, top_n=5):
                 if vacante_obj.get(skill, 0) > 0 and competencias_emp.get(skill, 0) > 0:
                     score += 1
 
-        return score
+        return base_score, score
 
     df_match = df_empleados.copy()
-    df_match["MATCH_SCORE"] = df_match.apply(calcular_match, axis=1)
+    df_match["BASE_SCORE"], df_match["MATCH_SCORE"] = zip(*df_match.apply(calcular_match, axis=1))
     df_top = df_match.sort_values(by="MATCH_SCORE", ascending=False).head(top_n)
     
     return df_top
@@ -172,8 +173,9 @@ def return_candidates_ts(vacante):
                 level = competencias.loc[candidate_id, comp]
                 if level > 0:
                     skill_name = comp.replace("_", " ").title()
-                    skills_list.append(f"{{ name: '{skill_name}', level: {int(level)} }}")
+                    skills_list.append(f"{{ name: '{skill_name}', level: {float(level)} }}")
         
+        base_score = int((row.get("BASE_SCORE", 0) / 8) * 100)
         match_score = int((row.get("MATCH_SCORE", 0) / 14) * 100)
 
         candidato = f"""  {{
@@ -187,6 +189,7 @@ def return_candidates_ts(vacante):
     languages: {idiomas_str},
     mobility: "{movilidad_str}",
     skills: [{', '.join(skills_list)}],
+    basePercentage: {base_score},
     matchPercentage: {match_score}
   }}"""
         candidatos_ts.append(candidato)

@@ -188,15 +188,16 @@ const ResultsPage = () => {
       
       // Calculate weighted match percentage
       let totalPoints = 0;
-      let maxPoints = 0;
-      
+      let weights = 0;
+
       Object.entries(filters).forEach(([key, weight]) => {
         const candidateLevel = skillMap.get(key) || 0;
-        totalPoints += candidateLevel * weight;
-        maxPoints += 3 * weight; // 3 is max skill level
+        if (candidateLevel > 0) {
+          totalPoints += weight;
+        }
+        weights += weight;
       });
-      
-      const newMatchPercentage = Math.round((totalPoints / maxPoints) * 100);
+      const newMatchPercentage = Math.round(((candidate.basePercentage * 8 / (8 + weights))  + ((totalPoints/weights * 100) * weights / (8 + weights))));
       
       // Return updated candidate with new match percentage
       return {
