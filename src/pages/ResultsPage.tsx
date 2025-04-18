@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { 
   ChevronDown, 
   ChevronUp, 
@@ -22,7 +22,7 @@ import {
 import CandidateCard from '@/components/CandidateCard';
 import CandidateProfileModal from '@/components/CandidateProfileModal';
 import MatchDetailsModal from '@/components/MatchDetailsModal';
-import { mockCandidates } from '@/data/mockCandidates';
+import { realCandidates } from '@/data/realCandidates';
 import { toast } from '@/components/ui/use-toast';
 import { Candidate, SkillFilter } from '@/types/candidate';
 import FilterPanel from '@/components/FilterPanel';
@@ -46,10 +46,13 @@ interface SkillFilters {
 }
 
 const ResultsPage = () => {
+  // const location = useLocation();
+  // const realCandidates = location.state?.candidates as Candidate[];
+  // console.log('realCandidates:', realCandidates);
+  const [originalCandidates] = useState<Candidate[]>(realCandidates);
+  const [candidates, setCandidates] = useState<Candidate[]>(realCandidates);
   const [selectedCandidate, setSelectedCandidate] = useState<string | null>(null);
   const [showMatchDetails, setShowMatchDetails] = useState<string | null>(null);
-  const [originalCandidates] = useState<Candidate[]>(mockCandidates);
-  const [candidates, setCandidates] = useState<Candidate[]>(mockCandidates);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState<SkillFilters>({
     leadership: 1,

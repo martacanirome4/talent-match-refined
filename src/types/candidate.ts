@@ -12,8 +12,8 @@ export interface Candidate {
   tenure: string;
   coursesCompleted: number;
   education: string;
-  languages: number;
-  mobility: boolean;
+  languages: string[];
+  mobility: string;
   skills: Skill[];
   matchPercentage: number;
   avatar?: string;
@@ -38,7 +38,7 @@ export interface CandidateProfile extends Candidate {
   };
   personalDetails: {
     tenure: string;
-    mobility: boolean;
+    mobility: string;
     education: string;
     languages: string[];
   };

@@ -8,7 +8,7 @@ import {
   DialogTitle
 } from '@/components/ui/dialog';
 import { Progress } from '@/components/ui/progress';
-import { getMatchDetails } from '@/data/mockCandidates';
+import { getMatchDetails } from '@/data/realCandidates';
 
 interface MatchDetailsModalProps {
   candidateId: string;

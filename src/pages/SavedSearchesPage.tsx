@@ -138,7 +138,7 @@ const SavedSearchesPage = () => {
                 <TableCell>
                   <div className="flex items-center">
                     <Calendar size={16} className="mr-1" />
-                    {formatDate(search.date)}
+                    {search.date}
                   </div>
                 </TableCell>
                 <TableCell>{search.candidateIds.length}</TableCell>

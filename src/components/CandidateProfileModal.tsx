@@ -15,7 +15,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer
 } from 'recharts';
-import { getCandidateProfile } from '@/data/mockCandidates';
+import { getCandidateProfile } from '@/data/realCandidates';
 
 interface CandidateProfileModalProps {
   candidateId: string;
@@ -33,12 +33,12 @@ const CandidateProfileModal: React.FC<CandidateProfileModalProps> = ({
   }, [candidateId]);
   
   const skillsData = [
-    { skill: 'Liderazgo', value: candidateProfile.skillsRating.leadership },
-    { skill: 'Comunicación', value: candidateProfile.skillsRating.communication },
-    { skill: 'Trabajo en Equipo', value: candidateProfile.skillsRating.teamwork },
-    { skill: 'Resolución de Problemas', value: candidateProfile.skillsRating.problemSolving },
-    { skill: 'Pensamiento Crítico', value: candidateProfile.skillsRating.criticalThinking },
-    { skill: 'Orientación a Resultados', value: candidateProfile.skillsRating.resultOrientation }
+    { skill: 'Liderazgo', value: candidateProfile.skillsRating.leadership*30 },
+    { skill: 'Comunicación', value: candidateProfile.skillsRating.communication*30 },
+    { skill: 'Trabajo en Equipo', value: candidateProfile.skillsRating.teamwork*30 },
+    { skill: 'Resolución de Problemas', value: candidateProfile.skillsRating.problemSolving*30 },
+    { skill: 'Pensamiento Crítico', value: candidateProfile.skillsRating.criticalThinking*30 },
+    { skill: 'Orientación a Resultados', value: candidateProfile.skillsRating.resultOrientation*30 }
   ];
   
   if (!isOpen) return null;
@@ -97,7 +97,7 @@ const CandidateProfileModal: React.FC<CandidateProfileModalProps> = ({
                 
                 <div>
                   <p className="text-zara-gray-600 text-sm">Disponibilidad de movilidad</p>
-                  <p>{candidateProfile.personalDetails.mobility ? 'Sí' : 'No'}</p>
+                  <p>{candidateProfile.personalDetails.mobility}</p>
                 </div>
                 
                 <div>

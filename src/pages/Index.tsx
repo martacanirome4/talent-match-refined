@@ -12,10 +12,12 @@ const Index = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!searchQuery && !fileName) {
+  
+    const file = fileInputRef.current?.files?.[0];
+  
+    if (!searchQuery && !file) {
       toast({
         title: "Información requerida",
         description: "Por favor, ingresa una descripción o sube un archivo",
@@ -23,11 +25,39 @@ const Index = () => {
       });
       return;
     }
-    
-    // En una aplicación real, aquí enviaríamos los datos al backend
-    // Por ahora, simulamos y navegamos a la página de resultados
-    navigate('/resultados');
+  
+    const formData = new FormData();
+    if (searchQuery) formData.append("searchQuery", searchQuery);
+    if (file) formData.append("file", file);
+  
+    setIsUploading(true);
+  
+    try {
+      const response = await fetch("http://localhost:8000/api/return_candidates_ts", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) throw new Error("Error al procesar la solicitud");
+  
+      const data = await response.json();
+      
+      // Puedes guardar el resultado en el estado global o navegar con datos
+      navigate("/resultados", { state: { candidates: data.tsFile } });
+      window.location.reload();
+  
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error",
+        description: "No se pudo procesar la solicitud. Inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
+  
   
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
