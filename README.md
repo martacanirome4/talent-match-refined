@@ -64,6 +64,14 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/d7c63c9d-b840-4db4-bdce-f673bf224c68) and click on Share -> Publish.
 
+OR follow these steps:
+
+1. Create a virtual environment:  ```python -m venv .venv```
+2. Install necessary libraries: ```pip install -r requirements.txt```
+3. Install the necessary dependencies: ```npm i```
+4. Start the development server with auto-reloading and an instant preview: ```npm run dev```
+5. On a new terminal initalize backend: ```uvicorn match_empleados:app --reload --port 8000```
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
