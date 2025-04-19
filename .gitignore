@@ -22,3 +22,30 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Evita subir entornos virtuales
+.venv/
+venv/
+
+# Archivos de configuración personal
+*.env
+.env
+.env.*
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos generados por herramientas
+*.log
+*.sqlite3
+*.db
+
+# Archivos de VSCode y editores comunes
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
