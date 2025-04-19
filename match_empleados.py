@@ -5,13 +5,28 @@ from typing import Optional
 import pandas as pd
 import re
 import docx
+import json
 
 #  Cargar empleados + competencias
-df_empleados = pd.read_csv("src/data/processed/empleados_final.csv")
-df_comp = pd.read_csv("src/data/processed/competencias.csv")
+
+# df_empleados = pd.read_csv("src/data/processed/empleados_final.csv")
+df_empleados = pd.read_csv("src/data/processed/empleados_final_1.csv")
+df_empleados.rename(columns={"CLASE_INTERNA": "PUESTO"}, inplace=True)
+
+# df_comp = pd.read_csv("src/data/processed/competencias.csv")
+df_comp = pd.read_csv("src/data/processed/competencias_1.csv")
+
 df_educacion = pd.read_csv("src/data/educacion.csv")
+df_educacion.fillna("Desconocido", inplace=True)
+
 df_idiomas = pd.read_csv("src/data/idiomas.csv")
+# Limpieza preventiva
+df_idiomas["IDIOMA"] = df_idiomas["IDIOMA"].str.lower().str.strip()
+df_idiomas["NIVEL_IDIOMA"] = df_idiomas["NIVEL_IDIOMA"].str.capitalize().str.strip()
+
 df_movilidad = pd.read_csv("src/data/movilidad.csv")
+df_movilidad.fillna("Desconocido", inplace=True)
+
 
 app = FastAPI()
 app.add_middleware(
@@ -104,8 +119,16 @@ def match_empleados_a_vacante(df_empleados, df_comp, vacante_obj, top_n=5):
         score = 0
 
         # Ubicación
-        if empleado.get("PROVINCIA", "").lower() == vacante_obj["ubicacion"].lower():
+        # Ubicación (con fallback por movilidad) -- si tiene interés en moverse
+        provincia = str(empleado.get("PROVINCIA", "")).lower()
+        ubicacion_vacante = vacante_obj["ubicacion"].lower()
+        movilidad = str(empleado.get("MOVILIDAD_DISPONIBLE", "")).lower()
+        if provincia == ubicacion_vacante:
             score += 1
+        elif movilidad in ["1", "nacional", "internacional", "internacional y nacional"]:
+            score += 1  # empleado no está en la ciudad pero tiene movilidad
+        # if empleado.get("PROVINCIA", "").lower() == vacante_obj["ubicacion"].lower():
+        #    score += 1
         # elif empleado.get("PROVINCIA", "").lower() != vacante_obj["ubicacion"].lower() and (empleado.get("MOVILIDAD_DISPONIBLE", "").lower() == 0 or empleado.get("MOVILIDAD_DISPONIBLE", "").lower() == 1): # NACIONAL O INTERNACIONAL Y NACIONAL 
         #     score += 1
 
@@ -150,22 +173,29 @@ def return_candidates_ts(vacante):
 
     for _, row in df_top.iterrows():
         candidate_id = str(row["ID_UNIVERSAL"])
-        
+
+        # Educación
         education = df_educacion[df_educacion["ID_UNIVERSAL"] == candidate_id]["NIVEL_ESTUDIO_MAXIMO"]
         education_str = education.iloc[0] if not education.empty else "Desconocido"
+        if pd.isna(education_str) or str(education_str).lower() == "nan":
+            education_str = "Desconocido"
 
+        # Idiomas
         idiomas = df_idiomas[df_idiomas["ID_UNIVERSAL"] == candidate_id]
         if not idiomas.empty:
-            idiomas_str = [
-                f"{idioma} ({nivel})"
-                for idioma, nivel in zip(idiomas["IDIOMA"], idiomas["NIVEL_IDIOMA"])
-            ]
+            idiomas_str = [f"{idioma} ({nivel})" for idioma, nivel in zip(idiomas["IDIOMA"], idiomas["NIVEL_IDIOMA"])]
         else:
-            idiomas_str = '"Desconocido"'
+            idiomas_str = ["Desconocido"]
+        idiomas_str_json = json.dumps(idiomas_str)
 
+        # Movilidad
         movilidad = df_movilidad[df_movilidad["ID_UNIVERSAL"] == candidate_id]["TIPO_INTERES_MOVILIDAD"]
-        movilidad_str = str(movilidad.iloc[0] if not movilidad.empty else "Desconocido")
-        
+        movilidad_str = str(movilidad.iloc[0] if not movilidad.empty else "Desconocido").strip().title()
+        if movilidad_str.lower() in ["", "nan"]:
+            movilidad_str = "Desconocido"
+        movilidad_str_json = json.dumps(movilidad_str)
+
+        # Competencias
         competencias = df_comp.set_index("ID_UNIVERSAL")
         skills_list = []
         if candidate_id in competencias.index:
@@ -174,31 +204,36 @@ def return_candidates_ts(vacante):
                 if level > 0:
                     skill_name = comp.replace("_", " ").title()
                     skills_list.append(f"{{ name: '{skill_name}', level: {float(level)} }}")
-        
+        skills_list_str = "[" + ", ".join(skills_list) + "]"
+
+        # Puntuación
         base_score = int((row.get("BASE_SCORE", 0) / 8) * 100)
         match_score = int((row.get("MATCH_SCORE", 0) / 14) * 100)
 
+        # Candidato
         candidato = f"""  {{
-    id: "{candidate_id}",
-    name: "{row.get("NOMBRE", "Desconocido")}",
-    position: "{row.get("PUESTO", "Desconocido")}",
-    location: "{row.get("PROVINCIA", "Desconocido")}",
-    tenure: "{int(row.get("ANTIGUEDAD", 0))} años",
-    coursesCompleted: {int(row.get("NUM_CURSOS", 0))},
-    education: "{education_str}",
-    languages: {idiomas_str},
-    mobility: "{movilidad_str}",
-    skills: [{', '.join(skills_list)}],
-    basePercentage: {base_score},
-    matchPercentage: {match_score}
-  }}"""
+  id: "{candidate_id}",
+  name: "Empleado {candidate_id[-4:]}",
+  position: "{row.get("PUESTO", "Desconocido")}",
+  location: "{row.get("PROVINCIA", "Desconocido")}",
+  tenure: "{int(row.get("ANTIGUEDAD", 0))} años",
+  coursesCompleted: {int(row.get("NUM_CURSOS", 0))},
+  education: {json.dumps(education_str)},
+  languages: {idiomas_str_json},
+  mobility: {movilidad_str_json},
+  skills: {skills_list_str},
+  basePercentage: {base_score},
+  matchPercentage: {match_score}
+}}"""
         candidatos_ts.append(candidato)
 
+    # Archivo TypeScript
     content = """import { Candidate, MatchDetails, CandidateProfile  } from '@/types/candidate';
 
 export const realCandidates: Candidate[] = [
 """ + ",\n".join(candidatos_ts) + "\n];"
 
+    # MatchDetails
     content += """
 
 export const getMatchDetails = (candidateId: string): MatchDetails => {
@@ -221,7 +256,6 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
     for _, row in df_top.iterrows():
         candidate_id = str(row["ID_UNIVERSAL"])
         columnas_habilidades = df_comp.columns[1:]
-        
         matched = df_empleados[df_empleados["ID_UNIVERSAL"] == candidate_id][columnas_habilidades].iloc[0][lambda x: x > 0].index.tolist()
         missing = df_empleados[df_empleados["ID_UNIVERSAL"] == candidate_id][columnas_habilidades].iloc[0][lambda x: x == 0].index.tolist()
         reason = f"Compatibilidad basada en experiencia y competencias clave del perfil de {row.get('NOMBRE', 'candidato')}."
@@ -241,11 +275,12 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
   }
   
   return matchDetails;
-};
-"""
+};"""
+
+    # CandidateProfile
     content += """
 
-    export const getCandidateProfile = (candidateId: string): CandidateProfile => {
+export const getCandidateProfile = (candidateId: string): CandidateProfile => {
   const candidate = realCandidates.find(c => c.id === candidateId);
   
   if (!candidate) {
@@ -253,10 +288,8 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
   }
   
   const profiles: {[key: string]: Omit<CandidateProfile, keyof Candidate> & {id: string}} = {"""
-    
     for _, row in df_top.iterrows():
         id_candidato = str(row["ID_UNIVERSAL"])
-
         content += f"""
     '{id_candidato}': {{
       id: '{id_candidato}',
@@ -270,9 +303,9 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
       }},
       personalDetails: {{
         tenure: "{int(row.get("ANTIGUEDAD", 0))} años",
-        mobility: "{movilidad_str}",
-        education: "{education_str}",
-        languages: {idiomas_str}
+        mobility: {json.dumps(movilidad_str)},
+        education: {json.dumps(education_str)},
+        languages: {json.dumps(idiomas_str)}
       }}
     }},"""
 
@@ -288,6 +321,7 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
 
     with open("src/data/realCandidates.ts", "w", encoding="utf-8") as f:
         f.write(content)
+
     return content
 
 

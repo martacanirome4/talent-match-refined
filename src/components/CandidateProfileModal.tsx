@@ -56,7 +56,9 @@ const CandidateProfileModal: React.FC<CandidateProfileModalProps> = ({
         <div className="mt-6">
           <div className="flex items-center mb-6">
             <div className="w-20 h-20 rounded-full bg-zara-gray-200 flex items-center justify-center text-2xl font-medium mr-6">
-              {candidateProfile.name.charAt(0)}
+              {candidateProfile.name !== "Desconocido"
+                ? candidateProfile.name.charAt(0)
+                : candidateProfile.position?.charAt(0) || "?"}
             </div>
             
             <div>

@@ -2,75 +2,75 @@ import { Candidate, MatchDetails, CandidateProfile  } from '@/types/candidate';
 
 export const realCandidates: Candidate[] = [
   {
-    id: "1601774",
-    name: "Desconocido",
-    position: "Desconocido",
-    location: "Madrid",
-    tenure: "9 años",
-    coursesCompleted: 80,
-    education: "Ciclos formativos de grado medio o superior",
-    languages: ['Inglés  (Medio)'],
-    mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0.1372149121046274 }, { name: 'Trabajo En Equipo', level: 0.0944608935282082 }, { name: 'Orientacion Resultados', level: 0.1209490625618464 }],
-    basePercentage: 50,
-    matchPercentage: 50
-  },
+  id: "1285964",
+  name: "Empleado 5964",
+  position: "02. Deputy Manager",
+  location: "Madrid",
+  tenure: "11 años",
+  coursesCompleted: 1,
+  education: "Desconocido",
+  languages: ["ingl\u00e9s (Medio)"],
+  mobility: "Desconocido",
+  skills: [{ name: 'Liderazgo', level: 0.1156253440531649 }, { name: 'Comunicacion', level: 0.1234185526833469 }, { name: 'Trabajo En Equipo', level: 0.042917298910847 }, { name: 'Resolucion Problemas', level: 0.0875138966046283 }, { name: 'Orientacion Resultados', level: 0.1962456663253175 }],
+  basePercentage: 12,
+  matchPercentage: 28
+},
   {
-    id: "1643443",
-    name: "Desconocido",
-    position: "Desconocido",
-    location: "Madrid",
-    tenure: "6 años",
-    coursesCompleted: 39,
-    education: "MBA",
-    languages: ['Español (Alto)'],
-    mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0.0918258620871567 }, { name: 'Trabajo En Equipo', level: 0.1580530545015999 }, { name: 'Orientacion Resultados', level: 0.1500027236730848 }],
-    basePercentage: 50,
-    matchPercentage: 50
-  },
+  id: "1268809",
+  name: "Empleado 8809",
+  position: "13. Sales Assistant",
+  location: "Madrid",
+  tenure: "1 años",
+  coursesCompleted: 1,
+  education: "Desconocido",
+  languages: ["Desconocido"],
+  mobility: "Desconocido",
+  skills: [{ name: 'Comunicacion', level: 0.1563459661011247 }, { name: 'Trabajo En Equipo', level: 0.063567588567986 }, { name: 'Orientacion Resultados', level: 0.1376426826698584 }],
+  basePercentage: 12,
+  matchPercentage: 28
+},
   {
-    id: "134406",
-    name: "Desconocido",
-    position: "Desconocido",
-    location: "Madrid",
-    tenure: "18 años",
-    coursesCompleted: 42,
-    education: "Titulación universitaria de grado superior",
-    languages: ['Español (Dominio completo)'],
-    mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0.0804878485429299 }, { name: 'Trabajo En Equipo', level: 0.2550527319760833 }, { name: 'Orientacion Resultados', level: 0.4689721471205864 }],
-    basePercentage: 50,
-    matchPercentage: 50
-  },
+  id: "1611457",
+  name: "Empleado 1457",
+  position: "11. Head Cashier",
+  location: "Madrid",
+  tenure: "8 años",
+  coursesCompleted: 1,
+  education: "Desconocido",
+  languages: ["ingl\u00e9s (Bajo)"],
+  mobility: "Desconocido",
+  skills: [{ name: 'Liderazgo', level: 0.1402705873177268 }, { name: 'Comunicacion', level: 0.0886747409303186 }, { name: 'Trabajo En Equipo', level: 0.0594473186646574 }, { name: 'Orientacion Resultados', level: 0.1287210763041948 }],
+  basePercentage: 12,
+  matchPercentage: 28
+},
   {
-    id: "1643293",
-    name: "Desconocido",
-    position: "Desconocido",
-    location: "Barcelona",
-    tenure: "7 años",
-    coursesCompleted: 39,
-    education: "Grado (Bolonia)",
-    languages: ['Catalán  (Dominio completo)'],
-    mobility: "INTERNACIONAL",
-    skills: [{ name: 'Liderazgo', level: 0.2499886731911664 }, { name: 'Comunicacion', level: 0.0997277705735506 }, { name: 'Trabajo En Equipo', level: 0.091329826858549 }, { name: 'Orientacion Resultados', level: 0.1249958519307296 }],
-    basePercentage: 37,
-    matchPercentage: 42
-  },
+  id: "1668993",
+  name: "Empleado 8993",
+  position: "03. Department Manager",
+  location: "Madrid",
+  tenure: "6 años",
+  coursesCompleted: 1,
+  education: "Desconocido",
+  languages: ["Desconocido"],
+  mobility: "Desconocido",
+  skills: [{ name: 'Liderazgo', level: 0.119056526735277 }, { name: 'Comunicacion', level: 0.1240994359762759 }, { name: 'Trabajo En Equipo', level: 0.0854306234593137 }, { name: 'Orientacion Resultados', level: 0.1092537256416497 }],
+  basePercentage: 12,
+  matchPercentage: 28
+},
   {
-    id: "1669997",
-    name: "Desconocido",
-    position: "Desconocido",
-    location: "Madrid",
-    tenure: "6 años",
-    coursesCompleted: 30,
-    education: "Ciclos formativos de grado medio o superior",
-    languages: ['Francés (Bajo)'],
-    mobility: "INTERNACIONAL Y NACIONAL",
-    skills: [{ name: 'Comunicacion', level: 0.1385792677434583 }, { name: 'Trabajo En Equipo', level: 0.1573012906108414 }],
-    basePercentage: 50,
-    matchPercentage: 42
-  }
+  id: "1601774",
+  name: "Empleado 1774",
+  position: "03. Department Manager",
+  location: "Madrid",
+  tenure: "9 años",
+  coursesCompleted: 1,
+  education: "Ciclos formativos de grado medio o superior",
+  languages: ["ingl\u00e9s (Medio)"],
+  mobility: "Internacional Y Nacional",
+  skills: [{ name: 'Comunicacion', level: 0.1376304057554486 }, { name: 'Trabajo En Equipo', level: 0.0947454053932529 }, { name: 'Orientacion Resultados', level: 0.1211660187821423 }],
+  basePercentage: 12,
+  matchPercentage: 28
+}
 ];
 
 export const getMatchDetails = (candidateId: string): MatchDetails => {
@@ -90,29 +90,29 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
   
   // Datos generados
   switch(candidateId) {
-    case '1601774':
+    case '1285964':
+      matchDetails.matchedSkills = ['liderazgo', 'comunicacion', 'trabajo_en_equipo', 'resolucion_problemas', 'orientacion_resultados'];
+      matchDetails.missingSkills = ['pensamiento_critico'];
+      matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
+      break;
+    case '1268809':
       matchDetails.matchedSkills = ['comunicacion', 'trabajo_en_equipo', 'orientacion_resultados'];
       matchDetails.missingSkills = ['liderazgo', 'resolucion_problemas', 'pensamiento_critico'];
       matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
       break;
-    case '1643443':
-      matchDetails.matchedSkills = ['comunicacion', 'trabajo_en_equipo', 'orientacion_resultados'];
-      matchDetails.missingSkills = ['liderazgo', 'resolucion_problemas', 'pensamiento_critico'];
-      matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
-      break;
-    case '134406':
-      matchDetails.matchedSkills = ['comunicacion', 'trabajo_en_equipo', 'orientacion_resultados'];
-      matchDetails.missingSkills = ['liderazgo', 'resolucion_problemas', 'pensamiento_critico'];
-      matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
-      break;
-    case '1643293':
+    case '1611457':
       matchDetails.matchedSkills = ['liderazgo', 'comunicacion', 'trabajo_en_equipo', 'orientacion_resultados'];
       matchDetails.missingSkills = ['resolucion_problemas', 'pensamiento_critico'];
       matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
       break;
-    case '1669997':
-      matchDetails.matchedSkills = ['comunicacion', 'trabajo_en_equipo'];
-      matchDetails.missingSkills = ['liderazgo', 'resolucion_problemas', 'orientacion_resultados', 'pensamiento_critico'];
+    case '1668993':
+      matchDetails.matchedSkills = ['liderazgo', 'comunicacion', 'trabajo_en_equipo', 'orientacion_resultados'];
+      matchDetails.missingSkills = ['resolucion_problemas', 'pensamiento_critico'];
+      matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
+      break;
+    case '1601774':
+      matchDetails.matchedSkills = ['comunicacion', 'trabajo_en_equipo', 'orientacion_resultados'];
+      matchDetails.missingSkills = ['liderazgo', 'resolucion_problemas', 'pensamiento_critico'];
       matchDetails.compatibilityReason = `Compatibilidad basada en experiencia y competencias clave del perfil de candidato.`;
       break;
     default:
@@ -124,8 +124,7 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
   return matchDetails;
 };
 
-
-    export const getCandidateProfile = (candidateId: string): CandidateProfile => {
+export const getCandidateProfile = (candidateId: string): CandidateProfile => {
   const candidate = realCandidates.find(c => c.id === candidateId);
   
   if (!candidate) {
@@ -133,89 +132,89 @@ export const getMatchDetails = (candidateId: string): MatchDetails => {
   }
   
   const profiles: {[key: string]: Omit<CandidateProfile, keyof Candidate> & {id: string}} = {
+    '1285964': {
+      id: '1285964',
+      skillsRating: {
+        leadership: 0.1156253440531649,
+        communication: 0.1234185526833469,
+        teamwork: 0.042917298910847,
+        problemSolving: 0.0875138966046283,
+        criticalThinking: 0.1962456663253175,
+        resultOrientation: 0.0
+      },
+      personalDetails: {
+        tenure: "11 años",
+        mobility: "Internacional Y Nacional",
+        education: "Ciclos formativos de grado medio o superior",
+        languages: ["ingl\u00e9s (Medio)"]
+      }
+    },
+    '1268809': {
+      id: '1268809',
+      skillsRating: {
+        leadership: 0.0,
+        communication: 0.1563459661011247,
+        teamwork: 0.063567588567986,
+        problemSolving: 0.0,
+        criticalThinking: 0.1376426826698584,
+        resultOrientation: 0.0
+      },
+      personalDetails: {
+        tenure: "1 años",
+        mobility: "Internacional Y Nacional",
+        education: "Ciclos formativos de grado medio o superior",
+        languages: ["ingl\u00e9s (Medio)"]
+      }
+    },
+    '1611457': {
+      id: '1611457',
+      skillsRating: {
+        leadership: 0.1402705873177268,
+        communication: 0.0886747409303186,
+        teamwork: 0.0594473186646574,
+        problemSolving: 0.0,
+        criticalThinking: 0.1287210763041948,
+        resultOrientation: 0.0
+      },
+      personalDetails: {
+        tenure: "8 años",
+        mobility: "Internacional Y Nacional",
+        education: "Ciclos formativos de grado medio o superior",
+        languages: ["ingl\u00e9s (Medio)"]
+      }
+    },
+    '1668993': {
+      id: '1668993',
+      skillsRating: {
+        leadership: 0.119056526735277,
+        communication: 0.1240994359762759,
+        teamwork: 0.0854306234593137,
+        problemSolving: 0.0,
+        criticalThinking: 0.1092537256416497,
+        resultOrientation: 0.0
+      },
+      personalDetails: {
+        tenure: "6 años",
+        mobility: "Internacional Y Nacional",
+        education: "Ciclos formativos de grado medio o superior",
+        languages: ["ingl\u00e9s (Medio)"]
+      }
+    },
     '1601774': {
       id: '1601774',
       skillsRating: {
         leadership: 0.0,
-        communication: 0.1372149121046274,
-        teamwork: 0.0944608935282082,
+        communication: 0.1376304057554486,
+        teamwork: 0.0947454053932529,
         problemSolving: 0.0,
-        criticalThinking: 0.1209490625618464,
+        criticalThinking: 0.1211660187821423,
         resultOrientation: 0.0
       },
       personalDetails: {
         tenure: "9 años",
-        mobility: "INTERNACIONAL Y NACIONAL",
+        mobility: "Internacional Y Nacional",
         education: "Ciclos formativos de grado medio o superior",
-        languages: ['Francés (Bajo)']
-      }
-    },
-    '1643443': {
-      id: '1643443',
-      skillsRating: {
-        leadership: 0.0,
-        communication: 0.0918258620871567,
-        teamwork: 0.1580530545015999,
-        problemSolving: 0.0,
-        criticalThinking: 0.1500027236730848,
-        resultOrientation: 0.0
-      },
-      personalDetails: {
-        tenure: "6 años",
-        mobility: "INTERNACIONAL Y NACIONAL",
-        education: "Ciclos formativos de grado medio o superior",
-        languages: ['Francés (Bajo)']
-      }
-    },
-    '134406': {
-      id: '134406',
-      skillsRating: {
-        leadership: 0.0,
-        communication: 0.0804878485429299,
-        teamwork: 0.2550527319760833,
-        problemSolving: 0.0,
-        criticalThinking: 0.4689721471205864,
-        resultOrientation: 0.0
-      },
-      personalDetails: {
-        tenure: "18 años",
-        mobility: "INTERNACIONAL Y NACIONAL",
-        education: "Ciclos formativos de grado medio o superior",
-        languages: ['Francés (Bajo)']
-      }
-    },
-    '1643293': {
-      id: '1643293',
-      skillsRating: {
-        leadership: 0.2499886731911664,
-        communication: 0.0997277705735506,
-        teamwork: 0.091329826858549,
-        problemSolving: 0.0,
-        criticalThinking: 0.1249958519307296,
-        resultOrientation: 0.0
-      },
-      personalDetails: {
-        tenure: "7 años",
-        mobility: "INTERNACIONAL Y NACIONAL",
-        education: "Ciclos formativos de grado medio o superior",
-        languages: ['Francés (Bajo)']
-      }
-    },
-    '1669997': {
-      id: '1669997',
-      skillsRating: {
-        leadership: 0.0,
-        communication: 0.1385792677434583,
-        teamwork: 0.1573012906108414,
-        problemSolving: 0.0,
-        criticalThinking: 0.0,
-        resultOrientation: 0.0
-      },
-      personalDetails: {
-        tenure: "6 años",
-        mobility: "INTERNACIONAL Y NACIONAL",
-        education: "Ciclos formativos de grado medio o superior",
-        languages: ['Francés (Bajo)']
+        languages: ["ingl\u00e9s (Medio)"]
       }
     },
   };
