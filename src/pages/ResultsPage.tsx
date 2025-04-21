@@ -208,8 +208,8 @@ const ResultsPage = () => {
         }
         weights += weight;
       });
-      const newMatchPercentage = Math.round(((candidate.basePercentage * 8 / (8 + weights))  + ((totalPoints/weights * 100) * weights / (8 + weights))));
-      
+      const newMatchPercentage = Math.round((candidate.basePercentage  + ((totalPoints/weights * 100))));
+
       // Return updated candidate with new match percentage
       return {
         ...candidate,
