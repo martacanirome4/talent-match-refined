@@ -93,76 +93,87 @@ const ResultsPage = () => {
   
   const handleExportResults = () => {
     try {
-      // Create a new PDF document
       const doc = new jsPDF();
-      
-      // Add title
+  
+      // Título
       doc.setFontSize(18);
-      doc.text("Resultados de búsqueda - Zara Talent Match", 14, 20);
-      
-      // Add date
+      doc.text("📋 Resultados de búsqueda – Talent Match", 14, 20);
+  
+      // Fecha
       doc.setFontSize(10);
-      doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 14, 30);
-      
-      // Create the table data
-      const tableColumn = ["Nombre", "Puesto actual", "Ubicación", "Match", "Antigüedad", "Competencias"];
-      const tableRows = candidates.map(candidate => [
-        candidate.name,
-        candidate.position,
-        candidate.location,
-        `${candidate.matchPercentage}%`,
-        candidate.tenure,
-        candidate.skills.map(s => s.name).join(", ")
+      doc.text(`Fecha de exportación: ${new Date().toLocaleDateString()}`, 14, 28);
+  
+      // Tabla
+      const tableColumn = [
+        "ID",
+        "Nombre",
+        "Puesto",
+        "Ubicación",
+        "Match",
+        "Antigüedad",
+        "Idiomas",
+        "Movilidad"
+      ];
+  
+      const tableRows = candidates.map((c) => [
+        c.id,
+        c.name,
+        c.position,
+        c.location,
+        `${c.matchPercentage}%`,
+        c.tenure,
+        Array.isArray(c.languages) ? c.languages.join(", ") : c.languages,
+        c.mobility ?? "Desconocido"
       ]);
-      
-      // Add the table to the document using autoTable
-      // @ts-ignore - Required to make it work with TypeScript
+  
+      // Tabla principal
+      // @ts-ignore
       doc.autoTable({
         head: [tableColumn],
         body: tableRows,
         startY: 35,
         theme: 'grid',
-        styles: { 
-          fontSize: 9, 
-          cellPadding: 3 
+        styles: {
+          fontSize: 9,
+          cellPadding: 3,
         },
         headStyles: {
-          fillColor: [40, 40, 40],
+          fillColor: [30, 30, 30],
           textColor: [255, 255, 255],
           fontStyle: 'bold'
         }
       });
-      
-      // Add filter information at the bottom
+  
+      // Añadir filtros al final del PDF
+      // @ts-ignore
+      const finalY = doc.lastAutoTable?.finalY || 90;
+      doc.setFontSize(11);
+      doc.text("🎯 Filtros activos:", 14, finalY + 10);
       doc.setFontSize(10);
-      // Calculate the final Y position
-      let finalY = 35 + (tableRows.length + 1) * 10; // Estimate based on rows
-      if (finalY < 130) finalY = 130; // Ensure minimum space
-      
-      doc.text("Filtros aplicados:", 14, finalY);
-      doc.text(`• Liderazgo: ${activeFilters.leadership}`, 14, finalY + 5);
-      doc.text(`• Comunicación: ${activeFilters.communication}`, 14, finalY + 10);
-      doc.text(`• Trabajo en equipo: ${activeFilters.teamwork}`, 14, finalY + 15);
-      doc.text(`• Resolución de problemas: ${activeFilters.problemSolving}`, 14, finalY + 20);
-      doc.text(`• Pensamiento crítico: ${activeFilters.criticalThinking}`, 14, finalY + 25);
-      
-      // Save the document
-      doc.save(`candidatos_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`);
-      
+      doc.text(`• Liderazgo: ${activeFilters.leadership}`, 14, finalY + 16);
+      doc.text(`• Comunicación: ${activeFilters.communication}`, 14, finalY + 21);
+      doc.text(`• Trabajo en equipo: ${activeFilters.teamwork}`, 14, finalY + 26);
+      doc.text(`• Resolución de problemas: ${activeFilters.problemSolving}`, 14, finalY + 31);
+      doc.text(`• Pensamiento crítico: ${activeFilters.criticalThinking}`, 14, finalY + 36);
+  
+      // Guardar
+      const filename = `resultados_match_${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`;
+      doc.save(filename);
+  
       toast({
-        title: "Resultados exportados",
-        description: "Los resultados han sido exportados en formato PDF.",
+        title: "📄 PDF exportado",
+        description: "La búsqueda ha sido exportada correctamente.",
       });
     } catch (error) {
-      console.error("Error al exportar a PDF:", error);
+      console.error("Error al exportar PDF:", error);
       toast({
         title: "Error al exportar",
-        description: "Ha ocurrido un error al exportar los resultados.",
+        description: "No se pudo generar el PDF correctamente.",
         variant: "destructive"
       });
     }
-  };
-  
+  };  
+
   const handleNewSearch = () => {
     navigate('/');
   };
@@ -214,6 +225,7 @@ const ResultsPage = () => {
     
     // Close the filter panel
     setIsFilterOpen(false);
+    
   };
   
   return (
@@ -231,15 +243,17 @@ const ResultsPage = () => {
             GUARDAR
           </Button>
           
-          <Button 
-            variant="outline" 
-            onClick={handleExportResults}
-            className="flex items-center text-sm border border-zara-gray-300 hover:bg-zara-gray-100"
-          >
-            <FileText size={16} className="mr-2" />
-            EXPORTAR PDF
-          </Button>
-          
+          {false && (
+            <Button 
+              variant="outline" 
+              onClick={handleExportResults}
+              className="flex items-center text-sm border border-zara-gray-300 hover:bg-zara-gray-100"
+            >
+              <FileText size={16} className="mr-2" />
+              EXPORTAR PDF
+            </Button>
+          )}
+
           <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
             <SheetTrigger asChild>
               <Button 

@@ -209,6 +209,8 @@ def return_candidates_ts(vacante):
         # Puntuación
         base_score = int((row.get("BASE_SCORE", 0) / 8) * 100)
         match_score = int((row.get("MATCH_SCORE", 0) / 14) * 100)
+        # Lo reescalaamos para que llegue más alto al front
+        match_score = min(100, int((row.get("MATCH_SCORE", 0) / 14) * 100 * 1.6))
 
         # Candidato
         candidato = f"""  {{

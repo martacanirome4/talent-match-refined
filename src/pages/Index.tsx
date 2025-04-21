@@ -42,7 +42,6 @@ const Index = () => {
   
       const data = await response.json();
       
-      // Puedes guardar el resultado en el estado global o navegar con datos
       navigate("/resultados", { state: { candidates: data.tsFile } });
       window.location.reload();
   
@@ -74,7 +73,6 @@ const Index = () => {
       
       setIsUploading(true);
       
-      // Simulamos la carga del archivo
       setTimeout(() => {
         setFileName(file.name);
         setIsUploading(false);
@@ -114,7 +112,6 @@ const Index = () => {
       
       setIsUploading(true);
       
-      // Simulamos la carga del archivo
       setTimeout(() => {
         setFileName(file.name);
         setIsUploading(false);
