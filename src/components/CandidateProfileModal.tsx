@@ -50,7 +50,6 @@ const CandidateProfileModal: React.FC<CandidateProfileModalProps> = ({
           <DialogTitle className="text-xl font-medium">
             {candidateProfile.name}
           </DialogTitle>
-          <X className="cursor-pointer" onClick={onClose} />
         </DialogHeader>
         
         <div className="mt-6">
@@ -70,11 +69,16 @@ const CandidateProfileModal: React.FC<CandidateProfileModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-lg font-medium mb-4 uppercase">Competencias</h3>
-              <div className="h-[300px] w-full">
+              
+              <div className="h-[360px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart cx="50%" cy="50%" outerRadius="80%" data={skillsData}>
-                    <PolarGrid />
-                    <PolarAngleAxis dataKey="skill" />
+                  <RadarChart cx="50%" cy="50%" outerRadius="70%" data={skillsData}>
+                    <PolarGrid stroke="#d1d5db" strokeDasharray="4 4" />
+                    <PolarAngleAxis 
+                      dataKey="skill" 
+                      tick={{ fontSize: 10 }} 
+                      tickLine={false} 
+                    />
                     <PolarRadiusAxis angle={30} domain={[0, 5]} />
                     <Radar
                       name="Skills"
@@ -86,6 +90,7 @@ const CandidateProfileModal: React.FC<CandidateProfileModalProps> = ({
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
+
             </div>
             
             <div>

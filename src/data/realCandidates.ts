@@ -13,7 +13,7 @@ export const realCandidates: Candidate[] = [
   mobility: "Desconocido",
   skills: [{ name: 'Comunicacion', level: 0.1563459661011247 }, { name: 'Trabajo En Equipo', level: 0.063567588567986 }, { name: 'Orientacion Resultados', level: 0.1376426826698584 }],
   basePercentage: 12,
-  matchPercentage: 45
+  matchPercentage: 28
 },
   {
   id: "1611457",
@@ -27,7 +27,7 @@ export const realCandidates: Candidate[] = [
   mobility: "Desconocido",
   skills: [{ name: 'Liderazgo', level: 0.1402705873177268 }, { name: 'Comunicacion', level: 0.0886747409303186 }, { name: 'Trabajo En Equipo', level: 0.0594473186646574 }, { name: 'Orientacion Resultados', level: 0.1287210763041948 }],
   basePercentage: 12,
-  matchPercentage: 45
+  matchPercentage: 28
 },
   {
   id: "1601774",
@@ -41,7 +41,7 @@ export const realCandidates: Candidate[] = [
   mobility: "Internacional Y Nacional",
   skills: [{ name: 'Comunicacion', level: 0.1376304057554486 }, { name: 'Trabajo En Equipo', level: 0.0947454053932529 }, { name: 'Orientacion Resultados', level: 0.1211660187821423 }],
   basePercentage: 12,
-  matchPercentage: 45
+  matchPercentage: 28
 },
   {
   id: "1668993",
@@ -55,7 +55,7 @@ export const realCandidates: Candidate[] = [
   mobility: "Desconocido",
   skills: [{ name: 'Liderazgo', level: 0.119056526735277 }, { name: 'Comunicacion', level: 0.1240994359762759 }, { name: 'Trabajo En Equipo', level: 0.0854306234593137 }, { name: 'Orientacion Resultados', level: 0.1092537256416497 }],
   basePercentage: 12,
-  matchPercentage: 45
+  matchPercentage: 28
 },
   {
   id: "1843743",
@@ -69,7 +69,7 @@ export const realCandidates: Candidate[] = [
   mobility: "Desconocido",
   skills: [{ name: 'Comunicacion', level: 0.1048815183120924 }, { name: 'Trabajo En Equipo', level: 0.1190490735427224 }, { name: 'Orientacion Resultados', level: 0.2577765528144325 }],
   basePercentage: 12,
-  matchPercentage: 45
+  matchPercentage: 28
 }
 ];
 
