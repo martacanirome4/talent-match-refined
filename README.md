@@ -82,7 +82,7 @@ pip install -r requirements.txt
 ### 1. Levantar el backend (FastAPI)
 
 ```bash
-uvicorn src.backend.match_empleados:app --reload
+uvicorn match_empleados:app --reload --port 8000
 ```
 
 Esto expone un endpoint en:
