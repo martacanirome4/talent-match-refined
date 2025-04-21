@@ -161,7 +161,7 @@ Accede desde: [http://localhost:8080](http://localhost:8080)
 ---
 
 ## 🖼️ Capturas de la interfaz
-
+<img width="1435" alt="captura3" src="https://github.com/user-attachments/assets/52f1ded3-8fac-45f2-b207-14323cc76fce" />
 <img width="1438" alt="captura7" src="https://github.com/user-attachments/assets/edd4efe4-8cc7-4a55-ba12-dfbe4db86088" />
 <img width="1434" alt="captura5" src="https://github.com/user-attachments/assets/31eb3393-110d-4f64-9498-b442868cea84" />
 
