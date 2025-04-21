@@ -1,4 +1,4 @@
-a# 🧠 INDITEX_TechChallenge – MVP: Matching Empleados y Vacantes
+# 🧠 INDITEX_TechChallenge – MVP: Matching Empleados y Vacantes
 
 Este proyecto desarrolla un MVP funcional para **identificar los empleados con mayor afinidad a una vacante interna** en Inditex, utilizando datos reales anonimizados, e integrando información histórica, competencias, y procesado de texto libre, como parte del reto planteado por el equipo de People Tech en Inditex.
 
