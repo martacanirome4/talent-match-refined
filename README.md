@@ -95,7 +95,6 @@ Permite subir un `.docx` o texto libre para generar los candidatos compatibles.
 ### 2. Levantar el frontend (React)
 
 ```bash
-cd src/frontend
 npm install
 npm run dev
 ```
