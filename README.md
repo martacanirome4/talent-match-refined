@@ -21,33 +21,6 @@ Diseñar un sistema que:
 
 ---
 
-## ⚙️ Instalación
-
-### Backend (FastAPI)
-
-```bash
-# Clonar repositorio
-git clone https://github.com/tu_usuario/Inditex_TechChallenge.git
-cd Inditex_TechChallenge
-
-# Crear entorno virtual
-python -m venv .venv
-source .venv/bin/activate
-
-# Instalar dependencias
-pip install -r requirements.txt
-```
-
-### Frontend (Lovable + Vite)
-
-```bash
-cd src
-npm install
-npm run dev
-```
-
----
-
 ## 🧪 Cómo funciona
 
 - El archivo `match_empleados.py` procesa empleados y vacantes, calculando una puntuación de afinidad según competencias, experiencia, educación y movilidad.
@@ -84,14 +57,13 @@ TALENT-MATCH-REFINED/
 ## ⚙️ Instalación y ejecución local
 
 ### 1. Clonar el repositorio
-
 ```bash
 git clone https://github.com/tu_usuario/Inditex_TechChallenge.git
 cd Inditex_TechChallenge
 ```
 
 ### 2. Crear y activar el entorno virtual
-
+(Es necesario tener Python instalado)
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # En Windows: .venv\Scripts\activate
