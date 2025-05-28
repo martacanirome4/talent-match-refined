@@ -197,6 +197,6 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-trick
 Este repositorio es parte de un reto técnico y no contiene datos reales personales. No contiene datos sensibles.
 ## Key contributions
 - **Exploratory Data Analysis:** cleaned 25 k+ candidate-vacancy records and built pandas / Seaborn notebooks that surfaced the four features most predictive of hiring success.
-- **Talent-Match Engine (co-author):** implemented TF-IDF vectoriser + cosine-similarity ranking, boosting top-5 match recall from 72 %% → 86 %%.
-- **UI & UX improvements:** refactored React front-end components, introduced responsive grid and colour-blind-safe palette, cutting average task completion time in user tests by 30 %%.
+- **Talent-Match Engine (co-author):** implemented cosine-similarity ranking, co-implemented TF-IDF vectoriser.
+- **UI & UX improvements:** refactored React front-end components, solved front-end back-end communication.
 
