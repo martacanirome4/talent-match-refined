@@ -2,6 +2,10 @@
 
 Este proyecto desarrolla un MVP funcional para **identificar los empleados con mayor afinidad a una vacante interna** en Inditex, utilizando datos reales anonimizados, e integrando información histórica, competencias, y procesado de texto libre, como parte del reto planteado por el equipo de People Tech en Inditex.
 
+# Dark-Matter API  🚀
+[![Last commit](https://img.shields.io/github/last-commit/martacanirome4/talent-match-refined)](https://github.com/martacanirome4/talent-match-refined/commits/main)
+[![License](https://img.shields.io/github/license/martacanirome4/talent-match-refined)](LICENSE)
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/d7c63c9d-b840-4db4-bdce-f673bf224c68
