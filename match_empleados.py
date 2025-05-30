@@ -6,6 +6,8 @@ import pandas as pd
 import re
 import docx
 import json
+import os
+import uvicorn
 
 #  Cargar empleados + competencias
 
@@ -29,13 +31,32 @@ df_movilidad.fillna("Desconocido", inplace=True)
 
 
 app = FastAPI()
+    
+# CORS first
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
+    allow_origins=[
+        "http://localhost:8080"          # local dev front-end
+        # "https://your-frontend.up.railway.app"  # prod front-end (add later)
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+#  health-check / root route
+@app.get("/")
+def health():
+    return {"status": "running"}
+
+# Only runs when you call:  python match_empleados.py
+if __name__ == "__main__":
+    uvicorn.run(
+        "match_empleados:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000)),
+        reload=False       # set True only for hot-reload locally
+    )
 
 # Función para extraer texto de .docx
 def extract_text_from_docx(file):
