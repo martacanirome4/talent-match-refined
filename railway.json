@@ -1,4 +1,6 @@
 {
-  "build": "pip install -r requirements.txt",
-  "start": "python match_empleados.py"
+  "$schema": "https://railway.app/railway.schema.json",
+  "deploy": {
+    "command": "python match_empleados.py"
+  }
 }
